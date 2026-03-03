@@ -4,6 +4,7 @@ import Gallery from './components/Gallery'
 import Lightbox from './components/Lightbox'
 import Footer from './components/Footer'
 import TapHearts from './components/TapHearts'
+import FullPageHearts from './components/FullPageHearts'
 import './App.css'
 
 const FOTOS_DIR = '/fotos'
@@ -11,7 +12,7 @@ const FOTOS_DIR = '/fotos'
 const DEFAULT_DATA = {
   titulo: "Nossa História",
   mensagem: "Para a minha marrentinha, com todo o amor do mundo. Feliz aniversário de namoro! 💕",
-  dataNamoro: "03/03/2025",
+  dataNamoro: "03/12/2025",
   dias: []
 }
 
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <>
+      <FullPageHearts />
       <TapHearts />
       <Hero mensagem={data.mensagem} dataNamoro={data.dataNamoro} />
       <main>
