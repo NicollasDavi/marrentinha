@@ -1,19 +1,35 @@
 function Hero({ mensagem, dataNamoro }) {
   const scrollToBottom = (e) => {
     e.preventDefault()
+    const html = document.documentElement
+    const body = document.body
     const start = window.pageYOffset
-    const end = document.documentElement.scrollHeight - window.innerHeight
-    const dist = Math.max(0, end - start)
-    const speed = 80 // pixels por segundo - devagar
-    const duration = dist / speed * 1000
-    let startTime = null
+    const maxScroll = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.scrollHeight,
+      html.offsetHeight
+    ) - window.innerHeight
+    const end = Math.max(0, maxScroll)
+    const dist = end - start
+    if (dist <= 0) return
+    const speed = 100
+    const duration = (dist / speed) * 1000
+    const origScrollBehavior = html.style.scrollBehavior
+    html.style.scrollBehavior = 'auto'
 
+    let startTime = null
     function step(now) {
       if (startTime === null) startTime = now
-      const t = Math.min((now - startTime) / duration, 1)
-      const y = start + dist * t
+      const elapsed = now - startTime
+      const t = Math.min(elapsed / duration, 1)
+      const y = Math.round(start + dist * t)
       window.scrollTo(0, y)
-      if (t < 1) requestAnimationFrame(step)
+      if (t < 1) {
+        requestAnimationFrame(step)
+      } else {
+        html.style.scrollBehavior = origScrollBehavior
+      }
     }
     requestAnimationFrame(step)
   }
