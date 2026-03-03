@@ -1,0 +1,33 @@
+:root {
+  --rosa-claro: #fce4ec;
+  --rosa-medio: #f8bbd9;
+  --rosa-escuro: #c2185b;
+  --rosa-romantico: #e91e63;
+  --dourado: #d4af37;
+  --dourado-suave: #f5e6c8;
+  --creme: #fff8f0;
+  --creme-quente: #fff5eb;
+  --marrom-suave: #5d4037;
+  --marrom-claro: #8d6e63;
+  --sombra: rgba(93, 64, 55, 0.12);
+  --sombra-forte: rgba(194, 24, 91, 0.15);
+  --sombra-foto: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  background: var(--creme);
+  color: var(--marrom-suave);
+  overflow-x: hidden;
+}
